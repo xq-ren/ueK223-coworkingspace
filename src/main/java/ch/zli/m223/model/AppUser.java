@@ -6,8 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
 
 @Entity
 public class AppUser {
@@ -20,9 +23,19 @@ public class AppUser {
 
     private String password;
 
+    @ManyToOne
     private Role role;
+    
+    @OneToMany
+    List<Entry> entries;
 
-    List<Entry> entry;
+    public List<Entry> getEntries() {
+        return this.entries;
+    }
+
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
+    }
 
     public Long getId() {
         return this.id;
@@ -56,12 +69,5 @@ public class AppUser {
         this.role = role;
     }
 
-    public List<Entry> getEntry() {
-        return this.entry;
-    }
-
-    public void setEntry(List<Entry> entry) {
-        this.entry = entry;
-    }
      
 }
