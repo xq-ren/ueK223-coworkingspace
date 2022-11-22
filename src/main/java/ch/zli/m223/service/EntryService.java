@@ -24,4 +24,5 @@ public class EntryService {
         var query = entityManager.createQuery("FROM Entry", Entry.class);
         return query.getResultList();
     }
+    
 }
