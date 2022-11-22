@@ -1,7 +1,6 @@
 package ch.zli.m223.model;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -64,6 +63,5 @@ public class AppUser {
     public void setEntry(List<Entry> entry) {
         this.entry = entry;
     }
-    
      
 }
