@@ -10,9 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "AppUser.findByUsername", query = "SELECT u FROM AppUser u WHERE u.username = :username")
+  })
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
