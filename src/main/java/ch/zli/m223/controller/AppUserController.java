@@ -24,20 +24,23 @@ import ch.zli.m223.service.AppUserService;
 
 @Path("/users")
 @Tag(name = "Users", description = "Handling of users")
-@RolesAllowed({ "User", "Admin" })
 public class AppUserController {
     
     @Inject
     AppUserService appUserService;
 
+  
     @GET
+    @RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     public List<AppUser> index() {
         return appUserService.findAll();
     }
 
+
     @Path("/{username}")
+    @RolesAllowed({"Admin"})
     @GET
     @Operation( summary = "get user by username", description = "get user by username")
     public Optional<AppUser> indexUsername(@PathParam("username") String username){
@@ -45,13 +48,15 @@ public class AppUserController {
     }
 
     @Path("/{userSince}")
+    @RolesAllowed({"Admin"})
     @GET
-    @Operation( summary = "get user by username", description = "get user by username")
+    @Operation( summary = "get list since when users logged in", description = "get list since when users logged in")
     public Optional<AppUser> indexUserSince(@PathParam("userSince") LocalDateTime userSince){
       return appUserService.findByUserSince(userSince);
     }
     
     @POST
+    @RolesAllowed({"Admin"})
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Creates new user", description = "Creates new user and returns it.")
@@ -67,6 +72,7 @@ public class AppUserController {
   }
 
     @Path("/{id}")
+    @RolesAllowed({"Admin"})
     @PUT
     @Operation(summary = "Updates an user.", description = "update user with certain id.")
     public AppUser update(@PathParam("id") Long id, AppUser user) {

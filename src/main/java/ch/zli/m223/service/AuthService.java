@@ -23,12 +23,13 @@ public class AuthService {
     String jwt = "";
     for (AppUser appUser : appUsers) {
         if (appUser.getUsername().equals(username) && appUser.getPassword().equals(passwort)) {
-            String token = Jwt.issuer("https://example.com/issuer")
+            String token = 
+            Jwt.issuer("https://example.com/issuer")
                     .upn(appUser.getUsername())
                     .groups(appUser.getRole().getRoleName())
                     .expiresIn(Integer.MAX_VALUE)
                     .sign();
-            return jwt = token;
+            System.out.println(token);
         }
     }
     throw new IllegalArgumentException("Passwort oder E-Mail stimmt nicht");
