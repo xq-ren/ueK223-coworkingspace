@@ -27,7 +27,7 @@ public class AuthService {
   JsonWebToken jwt;
 
   @Transactional
-  public String find(String username, String passwort) {
+  public String loginUser(String username, String passwort) {
     List<AppUser> appUsers = appUserService.findAll();
     String jwt = "";
     for (AppUser appUser : appUsers) {

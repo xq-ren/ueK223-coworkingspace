@@ -27,7 +27,7 @@ public class AuthController {
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Operation(summary = "Authenticate a user.", description = "Returns a token upon successful authentication.")
-  public Response create(@Valid Credential credential) {
-    return this.authService.authenticate(credential);
+  public String authenticate(@QueryParam("username")String username, @QueryParam("passwort") String passwort) {
+    return authService.loginUser(username, passwort);
   }
 }
