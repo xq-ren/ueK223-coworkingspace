@@ -9,3 +9,13 @@ Für die Test Daten von AppUser habe ich jeweils die User erstellt, die ich in d
 
 ## Test Daten Entry
 Für die Test Daten von Entry habe ich jeweils 3 Buchungen erstellt, die von 2 der User erstellt wurden.
+
+
+# Git Repository
+Link
+
+## Login Daten Admin
+Daten
+
+## Login Daten Mitglied
+Daten
