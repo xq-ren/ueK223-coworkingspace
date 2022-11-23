@@ -14,7 +14,7 @@ public class RoleService {
     private EntityManager entityManager;
     
     public List<Role> findAll() {
-        var query = entityManager.createQuery("FROM Entry", Role.class);
+        var query = entityManager.createQuery("FROM Role", Role.class);
         return query.getResultList();
     }
     

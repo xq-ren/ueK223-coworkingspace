@@ -1,21 +1,12 @@
 package ch.zli.m223.service;
 
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
 
+import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import javax.ws.rs.core.NewCookie;
-import javax.ws.rs.core.Response;
-
 import org.eclipse.microprofile.jwt.JsonWebToken;
-
 import ch.zli.m223.model.AppUser;
-import ch.zli.m223.model.Credential;
 import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
