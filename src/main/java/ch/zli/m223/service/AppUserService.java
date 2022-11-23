@@ -24,7 +24,7 @@ public class AppUserService {
     }
 
     public List<AppUser> findAll() {
-        var query = entityManager.createQuery("FROM Entry", AppUser.class);
+        var query = entityManager.createQuery("FROM AppUser", AppUser.class);
         return query.getResultList();
     }
 

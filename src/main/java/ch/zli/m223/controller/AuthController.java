@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -13,20 +14,20 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import ch.zli.m223.model.Credential;
-import ch.zli.m223.service.SessionService;
+import ch.zli.m223.service.AuthService;
 
 @Path("/session")
 @Tag(name = "Session", description = "Handling of sessions")
 @PermitAll
-public class SessionController {
+public class AuthController {
   
   @Inject
-  SessionService sessionService;
+  AuthService authService;
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Operation(summary = "Authenticate a user.", description = "Returns a token upon successful authentication.")
   public Response create(@Valid Credential credential) {
-    return this.sessionService.authenticate(credential);
+    return this.authService.authenticate(credential);
   }
 }
