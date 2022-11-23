@@ -1,5 +1,6 @@
 package ch.zli.m223.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,10 +28,18 @@ public class AppUserService {
         return query.getResultList();
     }
 
-    public Optional<AppUser> findByUsername(String username) {
+    public Optional<AppUser> findByUsername(String string) {
         return entityManager
-                .createNamedQuery("AppUser.findByEmail", AppUser.class)
-                .setParameter("username", username)
+                .createNamedQuery("AppUser.findByUsername", AppUser.class)
+                .setParameter("username", string)
+                .getResultStream()
+                .findFirst();
+    }
+
+    public Optional<AppUser> findByUserSince(LocalDateTime userSince) {
+        return entityManager
+                .createNamedQuery("AppUser.findByUserSince", AppUser.class)
+                .setParameter("userSince", userSince)
                 .getResultStream()
                 .findFirst();
     }

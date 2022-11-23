@@ -1,5 +1,6 @@
 package ch.zli.m223.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -27,6 +28,8 @@ public class AppUser {
     private String username;
 
     private String password;
+
+    private LocalDateTime userSince;
 
     @ManyToOne
     private Role role;
@@ -72,6 +75,14 @@ public class AppUser {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public LocalDateTime getUserSince() {
+        return this.userSince;
+    }
+
+    public void setUserSince(LocalDateTime userSince) {
+        this.userSince = userSince;
     }
 
      

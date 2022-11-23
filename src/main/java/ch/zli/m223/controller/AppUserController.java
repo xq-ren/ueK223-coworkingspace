@@ -1,6 +1,8 @@
 package ch.zli.m223.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -33,6 +35,20 @@ public class AppUserController {
     @Operation(summary = "Index all Users.", description = "Returns a list of all users.")
     public List<AppUser> index() {
         return appUserService.findAll();
+    }
+
+    @Path("/{username}")
+    @GET
+    @Operation( summary = "get user by username", description = "get user by username")
+    public Optional<AppUser> indexUsername(@PathParam("username") String username){
+      return appUserService.findByUsername(username);
+    }
+
+    @Path("/{userSince}")
+    @GET
+    @Operation( summary = "get user by username", description = "get user by username")
+    public Optional<AppUser> indexUserSince(@PathParam("userSince") LocalDateTime userSince){
+      return appUserService.findByUserSince(userSince);
     }
     
     @POST
